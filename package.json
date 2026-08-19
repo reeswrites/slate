@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "description": "Paced media planner. Turns a backlog into a weekly slate that survives contact with real life.",
+  "license": "MIT",
   "scripts": {
     "slate": "tsx src/cli/index.ts",
     "serve": "tsx src/web/server.ts",
