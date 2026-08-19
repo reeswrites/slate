@@ -1,0 +1,20 @@
+{
+  "name": "slate",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Paced media planner. Turns a backlog into a weekly slate that survives contact with real life.",
+  "scripts": {
+    "slate": "tsx src/cli/index.ts",
+    "serve": "tsx src/web/server.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Slate</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Slate</h1>
+      <p class="tag">A shelf, not a queue.</p>
+    </header>
+
+    <main>
+      <section id="due">
+        <h2>Today</h2>
+        <div id="due-list" class="cards"></div>
+      </section>
+
+      <section id="shape">
+        <h2>The shape of the week</h2>
+        <div id="week" class="week"></div>
+      </section>
+
+      <section id="paced-section">
+        <h2>In progress</h2>
+        <div id="paced" class="cards"></div>
+      </section>
+
+      <section id="shelf-section">
+        <div class="row">
+          <h2>Shelf <span id="shelf-count" class="count"></span></h2>
+          <input id="filter" type="search" placeholder="filter…" />
+        </div>
+        <div id="shelf" class="shelf"></div>
+      </section>
+
+      <section id="add-section">
+        <h2>Add</h2>
+        <textarea
+          id="paste"
+          rows="4"
+          placeholder="Paste a list — one per line.&#10;The Magic Mountain — Thomas Mann (book, 706pp)&#10;Chungking Express (1994, film, 102 min)&#10;Letterboxd / Goodreads CSV works too."
+        ></textarea>
+        <button id="paste-btn" class="primary">Add to shelf</button>
+      </section>
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <dialog id="pace-dialog">
+      <form method="dialog" id="pace-form">
+        <h3 id="pace-title"></h3>
+        <div class="tabs">
+          <button type="button" data-mode="habit" class="tab on">A rate</button>
+          <button type="button" data-mode="deadline" class="tab">A date</button>
+          <button type="button" data-mode="point" class="tab">One sitting</button>
+        </div>
+
+        <div class="field"><label>Total <input name="total" type="number" min="1" /></label></div>
+        <div class="field habit-only">
+          <label>Per session <input name="rate" type="number" min="1" /></label>
+        </div>
+        <div class="field deadline-only hidden">
+          <label>Finish by <input name="endDate" type="date" /></label>
+        </div>
+        <div class="field deadline-only hidden">
+          <label class="check"
+            ><input name="hardDeadline" type="checkbox" /> Real deadline — let the rate climb</label
+          >
+          <p class="note">Off by default. Falling behind pushes the date, not the pace.</p>
+        </div>
+        <div class="field"><label>Days <input name="days" value="daily" /></label></div>
+        <div class="field">
+          <label>Chapter ends <input name="chapters" placeholder="48,110,180,244" /></label>
+          <p class="note">Sessions snap to these. "End of ch. 8" beats "p. 212".</p>
+        </div>
+        <div class="field"><label>Already at <input name="at" type="number" min="0" /></label></div>
+
+        <div class="actions">
+          <button type="button" id="pace-cancel" class="ghost">Cancel</button>
+          <button type="button" id="pace-go" class="primary">Pace it</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

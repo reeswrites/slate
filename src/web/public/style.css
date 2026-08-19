@@ -1,0 +1,341 @@
+:root {
+  --paper: #f7f4ee;
+  --ink: #1d1b18;
+  --muted: #6f6a61;
+  --line: #ddd7cb;
+  --card: #fffdf8;
+  --accent: #7a5c3e;
+  --accent-soft: #efe6d8;
+  --radius: 10px;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #14130f;
+    --ink: #eae5da;
+    --muted: #948d80;
+    --line: #2c2a24;
+    --card: #1c1a15;
+    --accent: #c9a87c;
+    --accent-soft: #2a251c;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0 1.5rem 6rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.55 ui-serif, Georgia, "Iowan Old Style", serif;
+  max-width: 62rem;
+  margin-inline: auto;
+}
+
+header {
+  padding: 3rem 0 1rem;
+}
+h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
+}
+.tag {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+h2 {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  font-weight: 600;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  margin: 2.5rem 0 0.75rem;
+}
+
+section:first-of-type h2 {
+  margin-top: 1rem;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.count {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* cards */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card .body {
+  flex: 1;
+  min-width: 0;
+}
+.card .label {
+  font-size: 1.05rem;
+}
+.card .meta {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  margin-top: 0.15rem;
+}
+
+.empty {
+  color: var(--muted);
+  font-style: italic;
+  padding: 0.5rem 0;
+}
+
+/* buttons */
+button {
+  font: inherit;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.83rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  padding: 0.35rem 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
+}
+button.primary:hover {
+  opacity: 0.9;
+  color: var(--paper);
+}
+button.ghost {
+  border-color: transparent;
+  color: var(--muted);
+}
+.card .acts {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* week strip */
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+@media (max-width: 720px) {
+  .week {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.day {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.6rem;
+  min-height: 6.5rem;
+  background: var(--card);
+}
+.day.today {
+  border-color: var(--accent);
+}
+.day h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+}
+.day .chip {
+  white-space: pre-line;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
+  padding-left: 0.55rem;
+  border-left: 2px solid var(--accent-soft);
+}
+.day .chip.due {
+  border-left-color: var(--accent);
+}
+
+/* progress */
+.bar {
+  height: 3px;
+  background: var(--accent-soft);
+  border-radius: 2px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+
+/* shelf */
+.shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.5rem;
+}
+.tile {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.75rem;
+  background: var(--card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+.tile .t {
+  min-width: 0;
+}
+.tile .name {
+  font-size: 0.95rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tile .meta {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.9rem;
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  width: 100%;
+}
+#filter {
+  max-width: 14rem;
+}
+textarea {
+  width: 100%;
+  resize: vertical;
+  margin-bottom: 0.6rem;
+}
+
+/* dialog */
+dialog {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--ink);
+  max-width: 26rem;
+  width: calc(100% - 2rem);
+  padding: 1.25rem;
+}
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.35);
+}
+dialog h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+}
+.tabs {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+.tab.on {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.field {
+  margin-bottom: 0.7rem;
+}
+.field label {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: var(--muted);
+  display: block;
+}
+.field label.check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: var(--ink);
+}
+.field label.check input {
+  width: auto;
+}
+.field input {
+  margin-top: 0.2rem;
+}
+.note {
+  margin: 0.25rem 0 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.hidden {
+  display: none !important;
+}
+
+.toast {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(2rem);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: all 0.18s ease;
+  pointer-events: none;
+}
+.toast.on {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

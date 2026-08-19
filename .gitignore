@@ -1,0 +1,6 @@
+node_modules
+data/slate.json
+*.png
+data/glance.json
+.env
+.DS_Store
